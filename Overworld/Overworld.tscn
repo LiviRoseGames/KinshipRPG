@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbu16n7f5msq4"]
+
+[ext_resource type="PackedScene" uid="uid://bl8w1nf1hygyl" path="res://Overworld/Player/player_ow.tscn" id="1_6442h"]
+[ext_resource type="PackedScene" uid="uid://53q4k54qb2eu" path="res://Overworld/grass_background.tscn" id="2_r817w"]
+
+[node name="Overworld" type="Node2D"]
+
+[node name="Player_OW" parent="." instance=ExtResource("1_6442h")]
+position = Vector2(134, 76)
+
+[node name="GrassBackground" parent="." instance=ExtResource("2_r817w")]
+scale = Vector2(4, 4)
+transform = Transform2D(4, 0, 0, 4, 0, 0)

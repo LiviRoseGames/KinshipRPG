@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://53q4k54qb2eu"]
+
+[ext_resource type="Texture2D" uid="uid://dgjohc8jln881" path="res://Overworld/grass.png" id="1_6wlg0"]
+
+[node name="GrassBackground" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(320, 192)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxLayer"]
+custom_minimum_size = Vector2(320, 192)
+offset_right = 320.0
+offset_bottom = 192.0
+texture = ExtResource("1_6wlg0")
+stretch_mode = 1
