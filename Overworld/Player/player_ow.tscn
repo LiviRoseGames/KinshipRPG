@@ -1,7 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://bl8w1nf1hygyl"]
+[gd_scene load_steps=23 format=3 uid="uid://bl8w1nf1hygyl"]
 
 [ext_resource type="Script" path="res://Overworld/Player/player_ow.gd" id="1_5o5tm"]
 [ext_resource type="Texture2D" uid="uid://wuopkkufxtpj" path="res://Overworld/Player/Small-8-Direction-Characters_by_AxulArt.png" id="2_1tnxw"]
+[ext_resource type="Resource" uid="uid://c1fkfwt8cfmjn" path="res://GameDataFile.tres" id="2_qfjy7"]
 
 [sub_resource type="Animation" id="Animation_twwqa"]
 resource_name = "IdleDown"
@@ -309,6 +310,7 @@ radius = 3.5
 [node name="Player_OW" type="CharacterBody2D"]
 scale = Vector2(4, 4)
 script = ExtResource("1_5o5tm")
+data = ExtResource("2_qfjy7")
 
 [node name="Body" type="Sprite2D" parent="."]
 position = Vector2(0.5, -10)

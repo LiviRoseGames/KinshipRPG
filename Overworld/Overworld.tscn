@@ -1,45 +1,15 @@
 [gd_scene load_steps=6 format=3 uid="uid://bbu16n7f5msq4"]
 
+[ext_resource type="Script" path="res://Overworld/Overworld.gd" id="1_1360a"]
 [ext_resource type="PackedScene" uid="uid://bl8w1nf1hygyl" path="res://Overworld/Player/player_ow.tscn" id="1_6442h"]
 [ext_resource type="PackedScene" uid="uid://53q4k54qb2eu" path="res://Overworld/grass_background.tscn" id="2_r817w"]
-[ext_resource type="Texture2D" uid="uid://d37csn42r6was" path="res://Overworld/dirtpathtileset4_2.png" id="3_nv24r"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_anya5"]
-texture = ExtResource("3_nv24r")
-texture_region_size = Vector2i(32, 32)
-1:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-5:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
-1:2/0 = 0
-3:2/0 = 0
-4:2/0 = 0
-5:2/0 = 0
-0:3/0 = 0
-1:3/0 = 0
-2:3/0 = 0
-0:4/0 = 0
-2:4/0 = 0
-4:4/0 = 0
-5:4/0 = 0
-0:5/0 = 0
-1:5/0 = 0
-2:5/0 = 0
-4:5/0 = 0
-5:5/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_0fsmy"]
-tile_size = Vector2i(32, 32)
-sources/1 = SubResource("TileSetAtlasSource_anya5")
+[ext_resource type="Resource" uid="uid://c1fkfwt8cfmjn" path="res://GameDataFile.tres" id="2_uhgx3"]
+[ext_resource type="PackedScene" uid="uid://bniu53uc8fum4" path="res://Overworld/dirt_tiles.tscn" id="3_y8b1f"]
 
 [node name="Overworld" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_1360a")
+data = ExtResource("2_uhgx3")
 
 [node name="Player_OW" parent="." instance=ExtResource("1_6442h")]
 position = Vector2(134, 76)
@@ -49,8 +19,4 @@ scale = Vector2(4, 4)
 transform = Transform2D(4, 0, 0, 4, 0, 0)
 scroll_base_scale = Vector2(0.25, 0.25)
 
-[node name="TileMap" type="TileMap" parent="."]
-scale = Vector2(4, 4)
-tile_set = SubResource("TileSet_0fsmy")
-format = 2
-layer_0/tile_data = PackedInt32Array(131076, 262145, 1, 196612, 262145, 1, 131077, 262145, 1, 196613, 262145, 1, 131078, 262145, 1, 196614, 262145, 1, 262148, 262145, 1, 327684, 262145, 1, 393220, 262145, 1, 458756, 262145, 1, 524292, 262145, 1, 262149, 262145, 1, 327685, 262145, 1, 393221, 262145, 1, 458757, 262145, 1, 524293, 262145, 1, 393218, 262145, 1, 458754, 262145, 1, 393219, 262145, 1, 458755, 262145, 1, 0, 262145, 1, 65536, 262145, 1, 131072, 262145, 1, 196608, 262145, 1, 1, 262145, 1, 65537, 262145, 1, 131073, 262145, 1, 196609, 262145, 1, 2, 262145, 1, 65538, 262145, 1, 131074, 262145, 1, 196610, 262145, 1, 3, 262145, 1, 65539, 262145, 1, 131075, 262145, 1, 196611, 262145, 1, 4, 262145, 1, 65540, 262145, 1)
+[node name="DirtTiles" parent="." instance=ExtResource("3_y8b1f")]

@@ -1,14 +1,17 @@
 extends CharacterBody2D
 
-const WALK_SPEED = 240
+@export var data : GameData
 
-var lastDirection = "Right"
+const WALK_SPEED = 240
 
 @onready var animationPlayer = $AnimationPlayer
 
+var lastWalk
+
 func _ready() -> void:
+	global_position = data.globalPosPlayer
+	animate_idle(data.directionPlayer)
 	velocity = Vector2.ZERO
-	animationPlayer.play("IdleUp")
 
 func _process(delta : float) -> void:
 #Get player movement input
@@ -22,7 +25,13 @@ func _process(delta : float) -> void:
 	if is_moving():
 		animate_walk()
 	else:
-		animate_idle()
+		animate_idle(animationPlayer.current_animation)
+
+func _unhandled_input(event : InputEvent) -> void:
+	if event.is_action_pressed("ui_accept"):
+		data.globalPosPlayer = global_position
+		data.directionPlayer = lastWalk
+		get_tree().change_scene_to_file("res://Battle/battle.tscn")
 
 func is_moving() -> bool:
 	return velocity != Vector2.ZERO
@@ -40,6 +49,8 @@ func animate_walk() -> void:
 		135: animationPlayer.play("WalkDownLeft")
 		-45: animationPlayer.play("WalkUpRight")
 		-135: animationPlayer.play("WalkUpLeft")
+	
+	lastWalk = animationPlayer.current_animation
 
 	
 	
@@ -59,8 +70,8 @@ func animate_walk() -> void:
 	#else:
 		#return
 
-func animate_idle() -> void:
-	match animationPlayer.current_animation:
+func animate_idle(direction) -> void:
+	match direction:
 		"WalkUp" : animationPlayer.play("IdleUp")
 		"WalkDown" : animationPlayer.play("IdleDown")
 		"WalkRight" : animationPlayer.play("IdleRight")
