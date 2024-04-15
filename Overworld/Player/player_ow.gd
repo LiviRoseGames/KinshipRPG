@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const WALK_SPEED = 60
+const WALK_SPEED = 240
 
 var lastDirection = "Right"
 
