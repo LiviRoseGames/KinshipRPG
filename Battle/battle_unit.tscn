@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://mdh1fli70i3i"]
+
+[ext_resource type="Script" path="res://Battle/BattleUnit.gd" id="1_fax4b"]
+[ext_resource type="Texture2D" uid="uid://c68et265f47h4" path="res://Battle/Shadow.png" id="2_edgn6"]
+
+[node name="BattleUnit" type="Node2D"]
+script = ExtResource("1_fax4b")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(0, -21)
+scale = Vector2(6, 6)
+texture = ExtResource("2_edgn6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -65)

@@ -6,7 +6,7 @@ const WALK_SPEED = 240
 
 @onready var animationPlayer = $AnimationPlayer
 
-var lastWalk
+var lastWalk = "IdleDown"
 
 func _ready() -> void:
 	global_position = data.globalPosPlayer
@@ -80,3 +80,14 @@ func animate_idle(direction) -> void:
 		"WalkDownLeft" : animationPlayer.play("IdleDownLeft")
 		"WalkUpRight" : animationPlayer.play("IdleUpRight")
 		"WalkUpLeft" : animationPlayer.play("IdleUpLeft")
+		
+		"IdleUp" : animationPlayer.play("IdleUp")
+		"IdleDown" : animationPlayer.play("IdleDown")
+		"IdleRight" : animationPlayer.play("IdleRight")
+		"IdleLeft" : animationPlayer.play("IdleLeft")
+		"IdleDownRight" : animationPlayer.play("IdleDownRight")
+		"IdleDownLeft" : animationPlayer.play("IdleDownLeft")
+		"IdleUpRight" : animationPlayer.play("IdleUpRight")
+		"IdleUpLeft" : animationPlayer.play("IdleUpLeft")
+		
+	lastWalk = animationPlayer.current_animation

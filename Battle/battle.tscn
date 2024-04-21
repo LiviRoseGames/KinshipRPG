@@ -1,11 +1,196 @@
-[gd_scene load_steps=2 format=3 uid="uid://c1tap86mnwk5r"]
+[gd_scene load_steps=12 format=3 uid="uid://c1tap86mnwk5r"]
 
 [ext_resource type="Script" path="res://Battle/battle.gd" id="1_hhl1t"]
+[ext_resource type="Texture2D" uid="uid://ck36inh0hj3ml" path="res://Battle/parallax_demon_woods_pack/layers/parallax-demon-woods-bg.png" id="2_3642u"]
+[ext_resource type="Texture2D" uid="uid://c4mt632w2ps7o" path="res://Battle/parallax_demon_woods_pack/layers/parallax-demon-woods-far-trees.png" id="3_034cs"]
+[ext_resource type="Texture2D" uid="uid://d38bw0qjxxq4i" path="res://Battle/parallax_demon_woods_pack/layers/parallax-demon-woods-mid-trees.png" id="4_hmri2"]
+[ext_resource type="Texture2D" uid="uid://dw8yo8jyxv22l" path="res://Battle/parallax_demon_woods_pack/layers/parallax-demon-woods-close-trees.png" id="5_tg6pg"]
+[ext_resource type="PackedScene" uid="uid://mdh1fli70i3i" path="res://Battle/battle_unit.tscn" id="6_72stk"]
+[ext_resource type="PackedScene" uid="uid://d2o6hu3nfyr8i" path="res://Battle/Monsters/monster_battle_anims.tscn" id="7_6rtsh"]
+
+[sub_resource type="Animation" id="Animation_i8u3l"]
+resource_name = "Pan"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 2),
+"transitions": PackedFloat32Array(0.500001, 1, 1),
+"update": 0,
+"values": [Vector2(-640, 360), Vector2(640, 360), Vector2(640, 360)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Intro/ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.145098, 0.631373, 0.67451, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Intro/ColorRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Intro/ColorRect:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_b2uae"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-640, 360)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Intro/ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Intro/ColorRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Intro/ColorRect:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rdfb2"]
+_data = {
+"Pan": SubResource("Animation_i8u3l"),
+"RESET": SubResource("Animation_b2uae")
+}
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lby3p"]
+blend_mode = 1
 
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_hhl1t")
 
-[node name="Label" type="Label" parent="."]
-offset_right = 140.0
-offset_bottom = 80.0
-text = "Battle works"
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxBG" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(960, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxBG"]
+scale = Vector2(2.647, 2.647)
+texture = ExtResource("2_3642u")
+centered = false
+
+[node name="FarTrees" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(1567, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/FarTrees"]
+scale = Vector2(2.647, 2.647)
+texture = ExtResource("3_034cs")
+centered = false
+
+[node name="MidTrees" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.4, 0.4)
+motion_mirroring = Vector2(1567, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/MidTrees"]
+scale = Vector2(2.647, 2.647)
+texture = ExtResource("4_hmri2")
+centered = false
+
+[node name="CloseTrees" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.6, 0.6)
+motion_mirroring = Vector2(1567, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/CloseTrees"]
+scale = Vector2(2.647, 2.647)
+texture = ExtResource("5_tg6pg")
+centered = false
+
+[node name="PlayerMark" type="Marker2D" parent="."]
+position = Vector2(400, 550)
+
+[node name="PlayerBattleUnit" parent="PlayerMark" instance=ExtResource("6_72stk")]
+battle_animations_scene = ExtResource("7_6rtsh")
+
+[node name="EnemyMark" type="Marker2D" parent="."]
+position = Vector2(800, 550)
+
+[node name="EnemyBattleUnit" parent="EnemyMark" instance=ExtResource("6_72stk")]
+scale = Vector2(-1, 1)
+battle_animations_scene = ExtResource("7_6rtsh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Camera2D")
+libraries = {
+"": SubResource("AnimationLibrary_rdfb2")
+}
+autoplay = "Pan"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-640, 360)
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Intro" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Intro"]
+material = SubResource("CanvasItemMaterial_lby3p")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
