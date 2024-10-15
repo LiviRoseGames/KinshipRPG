@@ -2,10 +2,13 @@ extends Sprite2D
 class_name BattleAnimations
 
 @onready var animPlayer = $AnimationPlayer
+@onready var sprite = $"."
 
 signal animation_finished
 
 func _ready() -> void:
+	randomize()
+	sprite.frame = randi_range(0, 8)
 	animPlayer.animation_finished.connect(
 		func (animation):
 			animation_finished.emit()
